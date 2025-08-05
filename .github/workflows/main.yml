@@ -1,0 +1,161 @@
+name: Fetch Crypto Candle Data  
+  
+on:  
+  schedule:  
+    # Run daily at 2:00 AM UTC (Option 1: Recommended)  
+    - cron: '0 2 * * *'  
+  workflow_dispatch: # Allow manual trigger  
+  
+jobs:  
+  fetch-data:  
+    runs-on: self-hosted  
+      
+    steps:  
+    - name: Checkout repository  
+      uses: actions/checkout@v4  
+      with:  
+        token: ${{ secrets.GITHUB_TOKEN }}  
+          
+    - name: Check system resources  
+      run: |  
+        echo "=== System Resource Check ==="  
+        echo "Available disk space:"  
+        df -h  
+        echo "Memory usage:"  
+        free -h  
+        echo "CPU info:"  
+        nproc  
+        echo "Network connectivity test:"  
+        ping -c 3 api.bybit.com || echo "Warning: Cannot reach Bybit API directly"  
+          
+    - name: Check repository size and limits  
+      run: |  
+        echo "=== Repository Size Check ==="  
+        du -sh .  
+        echo "File count:"  
+        find . -type f | wc -l  
+        echo "Git repository size:"  
+        git count-objects -vH  
+          
+    - name: Set up Python  
+      uses: actions/setup-python@v4  
+      with:  
+        python-version: '3.9'  
+          
+    - name: Install dependencies  
+      run: |  
+        pip install pybit pandas openpyxl requests  
+          
+    - name: Test API connectivity via proxy  
+      env:  
+        PROXY_URL: ${{ secrets.PROXY_URL }}  
+      run: |  
+        python -c "  
+        import os  
+        import requests  
+        import sys  
+          
+        proxy_url = os.getenv('PROXY_URL')  
+        if not proxy_url:  
+            print('⚠ No proxy URL configured, testing direct connection')  
+            test_url = 'https://api.bybit.com/v5/market/time'  
+        else:  
+            print(f'✓ Using proxy: {proxy_url}')  
+            test_url = f'{proxy_url}/https://api.bybit.com/v5/market/time'  
+          
+        try:  
+            response = requests.get(test_url, timeout=10)  
+            if response.status_code == 200:  
+                data = response.json()  
+                if data.get('retCode') == 0:  
+                    print('✓ Bybit API connectivity successful via proxy')  
+                    print(f'Server time: {data.get(\"result\", {}).get(\"timeSecond\", \"Unknown\")}')  
+                else:  
+                    print(f'⚠ API returned error: {data.get(\"retMsg\", \"Unknown error\")}')  
+            else:  
+                print(f'✗ HTTP error: {response.status_code}')  
+                print(f'Response: {response.text[:200]}')  
+                sys.exit(1)  
+        except Exception as e:  
+            print(f'✗ API connectivity error: {str(e)}')  
+            sys.exit(1)  
+        "  
+          
+    - name: Fetch crypto candle data  
+      env:  
+        PROXY_URL: ${{ secrets.PROXY_URL }}  
+      run: python fetch_crypto_data.py  
+        
+    - name: Check data integrity  
+      run: |  
+        echo "=== Data Integrity Check ==="  
+        yesterday=$(date -d 'yesterday' '+%Y-%m-%d')  
+          
+        if [ -d "$yesterday" ]; then  
+          echo "✓ Date folder created: $yesterday"  
+          for category in spot perpetual; do  
+            if [ -d "$yesterday/$category" ]; then  
+              echo "✓ Category folder exists: $category"  
+              json_count=$(find "$yesterday/$category" -name "*.json" | wc -l)  
+              excel_count=$(find "$yesterday/$category" -name "*.xlsx" | wc -l)  
+              echo "  JSON files: $json_count, Excel files: $excel_count"  
+                
+              # Verify we have expected number of intervals (10 intervals per category)  
+              if [ "$json_count" -eq 10 ] && [ "$excel_count" -eq 10 ]; then  
+                echo "  ✓ All interval files present for $category"  
+              else  
+                echo "  ⚠ Expected 10 files each, got JSON: $json_count, Excel: $excel_count"  
+              fi  
+            else  
+              echo "✗ Missing category folder: $category"  
+              exit 1  
+            fi  
+          done  
+        else  
+          echo "✗ Date folder not created"  
+          exit 1  
+        fi  
+          
+    - name: Check log file  
+      run: |  
+        if [ -f "crypto_data_fetch.log" ]; then  
+          echo "=== Log File Summary ==="  
+          echo "Log file size: $(du -h crypto_data_fetch.log | cut -f1)"  
+          echo "Last 10 log entries:"  
+          tail -10 crypto_data_fetch.log  
+            
+          # Check for any ERROR entries  
+          error_count=$(grep -c "ERROR" crypto_data_fetch.log || echo "0")  
+          if [ "$error_count" -gt 0 ]; then  
+            echo "⚠ Found $error_count ERROR entries in log"  
+            echo "Recent errors:"  
+            grep "ERROR" crypto_data_fetch.log | tail -5  
+          else  
+            echo "✓ No errors found in log file"  
+          fi  
+        else  
+          echo "⚠ Log file not found"  
+        fi  
+          
+    - name: Configure Git with your credentials  
+      run: |  
+        git config --local user.email "${{ github.actor }}@users.noreply.github.com"  
+        git config --local user.name "${{ github.actor }}"  
+          
+    - name: Commit and push changes  
+      run: |  
+        git add .  
+        if git diff --staged --quiet; then  
+          echo "No changes to commit"  
+        else  
+          git commit -m "Add crypto candle data for $(date -d 'yesterday' '+%Y-%m-%d')"  
+          git push  
+        fi  
+          
+    - name: Upload log file as artifact  
+      if: always()  
+      uses: actions/upload-artifact@v4  
+      with:  
+        name: crypto-data-fetch-log-${{ github.run_number }}  
+        path: crypto_data_fetch.log  
+        retention-days: 30
