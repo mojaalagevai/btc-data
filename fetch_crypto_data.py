@@ -156,47 +156,47 @@ class CryptoDataFetcher:
     def fetch_candle_data_with_retry(self, category: str, interval: str,  
                                start_time: int, end_time: int) -> Optional[Dict]:  
       
-    # Calculate if pagination is needed  
-    interval_minutes = self.get_interval_minutes(interval)  
-    total_minutes = (end_time - start_time) // (1000 * 60)  # Convert ms to minutes  
-    candles_needed = total_minutes // interval_minutes  
-      
-    all_candles = []  
-      
-    if candles_needed <= 1000:  
-        # Single request sufficient  
-        response = self._fetch_single_batch(category, interval, start_time, end_time)  
-        if response and response.get('retCode') == 0:  
-            return response  
-        return None  
-    else:  
-        # Multiple requests needed - implement pagination  
-        current_start = start_time  
-        batch_size_ms = 1000 * interval_minutes * 60 * 1000  # 1000 candles worth of milliseconds  
-          
-        while current_start < end_time:  
-            current_end = min(current_start + batch_size_ms, end_time)  
-              
-            response = self._fetch_single_batch(category, interval, current_start, current_end)  
-            if response and response.get('retCode') == 0:  
-                batch_candles = response['result']['list']  
-                all_candles.extend(batch_candles)  
-                logger.info(f"Fetched {len(batch_candles)} candles for batch")  
-            else:  
-                logger.error(f"Failed to fetch batch starting at {current_start}")  
-                return None  
-                  
-            current_start = current_end  
-            time.sleep(0.2)  # Rate limiting between batches  
-          
-        # Return combined result in same format as single request  
-        return {  
-            'retCode': 0,  
-            'retMsg': 'OK',  
-            'result': {  
-                'list': all_candles  
-            }  
-        }  
+      # Calculate if pagination is needed  
+      interval_minutes = self.get_interval_minutes(interval)  
+      total_minutes = (end_time - start_time) // (1000 * 60)  # Convert ms to minutes  
+      candles_needed = total_minutes // interval_minutes  
+        
+      all_candles = []  
+        
+      if candles_needed <= 1000:  
+          # Single request sufficient  
+          response = self._fetch_single_batch(category, interval, start_time, end_time)  
+          if response and response.get('retCode') == 0:  
+              return response  
+          return None  
+      else:  
+          # Multiple requests needed - implement pagination  
+          current_start = start_time  
+          batch_size_ms = 1000 * interval_minutes * 60 * 1000  # 1000 candles worth of milliseconds  
+            
+          while current_start < end_time:  
+              current_end = min(current_start + batch_size_ms, end_time)  
+                
+              response = self._fetch_single_batch(category, interval, current_start, current_end)  
+              if response and response.get('retCode') == 0:  
+                  batch_candles = response['result']['list']  
+                  all_candles.extend(batch_candles)  
+                  logger.info(f"Fetched {len(batch_candles)} candles for batch")  
+              else:  
+                  logger.error(f"Failed to fetch batch starting at {current_start}")  
+                  return None  
+                    
+              current_start = current_end  
+              time.sleep(0.2)  # Rate limiting between batches  
+            
+          # Return combined result in same format as single request  
+          return {  
+              'retCode': 0,  
+              'retMsg': 'OK',  
+              'result': {  
+                  'list': all_candles  
+              }  
+          }  
   
 def get_interval_minutes(self, interval: str) -> int:  
     """Convert interval string to minutes."""  
