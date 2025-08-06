@@ -980,3 +980,181 @@
 2025-08-06 07:55:52,720 - INFO - Saved perpetual/12h data: 2 candles for BTCUSDT to 2025-08-05/perpetual/12h
 2025-08-06 07:55:53,421 - INFO - Data collection completed for BTCUSDT: 20/20 successful
 2025-08-06 07:55:53,422 - INFO - All BTCUSDT data fetched successfully
+2025-08-06 07:59:25,646 - INFO - No proxy configured, using direct connection
+2025-08-06 07:59:25,646 - INFO - Starting BTCUSDT candle data collection
+2025-08-06 07:59:25,646 - INFO - Testing server time with proxy: False
+2025-08-06 07:59:25,646 - INFO - Proxy URL: 
+2025-08-06 07:59:25,646 - INFO - Target URL: https://api.bybit.com/v5/market/time
+2025-08-06 07:59:25,905 - INFO - ✓ Server time test successful
+2025-08-06 07:59:25,906 - INFO - Fetching data for 2025-08-05 (UTC)
+2025-08-06 07:59:25,906 - INFO - Time range: 1754352000000 to 1754438399999
+2025-08-06 07:59:25,906 - INFO - Processing spot category for BTCUSDT
+2025-08-06 07:59:25,906 - INFO -   Fetching 1m interval data
+2025-08-06 07:59:25,906 - INFO - Fetching spot 1 batch (attempt 1)
+2025-08-06 07:59:26,387 - INFO - Fetched 1000 candles for batch
+2025-08-06 07:59:26,588 - INFO - Fetching spot 1 batch (attempt 1)
+2025-08-06 07:59:26,755 - INFO - Fetched 440 candles for batch
+2025-08-06 07:59:26,955 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:26,956 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/1m/BTCUSDT_1_2025-08-05.json
+2025-08-06 07:59:26,956 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/1m/BTCUSDT_1_2025-08-05.xlsx
+2025-08-06 07:59:26,956 - INFO - Deleted existing JSON file: 2025-08-05/spot/1m/BTCUSDT_1_2025-08-05.json
+2025-08-06 07:59:26,961 - INFO - Successfully wrote JSON to 2025-08-05/spot/1m/BTCUSDT_1_2025-08-05.json
+2025-08-06 07:59:31,235 - INFO - Saved spot/1m data: 1440 candles for BTCUSDT to 2025-08-05/spot/1m
+2025-08-06 07:59:31,435 - INFO -   Fetching 3m interval data
+2025-08-06 07:59:31,435 - INFO - Fetching spot 3 batch (attempt 1)
+2025-08-06 07:59:31,634 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:31,634 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/3m/BTCUSDT_3_2025-08-05.json
+2025-08-06 07:59:31,635 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/3m/BTCUSDT_3_2025-08-05.xlsx
+2025-08-06 07:59:31,635 - INFO - Deleted existing JSON file: 2025-08-05/spot/3m/BTCUSDT_3_2025-08-05.json
+2025-08-06 07:59:31,736 - INFO - Successfully wrote JSON to 2025-08-05/spot/3m/BTCUSDT_3_2025-08-05.json
+2025-08-06 07:59:32,441 - INFO - Saved spot/3m data: 480 candles for BTCUSDT to 2025-08-05/spot/3m
+2025-08-06 07:59:32,642 - INFO -   Fetching 5m interval data
+2025-08-06 07:59:32,642 - INFO - Fetching spot 5 batch (attempt 1)
+2025-08-06 07:59:32,967 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:32,967 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/5m/BTCUSDT_5_2025-08-05.json
+2025-08-06 07:59:32,967 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/5m/BTCUSDT_5_2025-08-05.xlsx
+2025-08-06 07:59:32,967 - INFO - Deleted existing JSON file: 2025-08-05/spot/5m/BTCUSDT_5_2025-08-05.json
+2025-08-06 07:59:33,035 - INFO - Successfully wrote JSON to 2025-08-05/spot/5m/BTCUSDT_5_2025-08-05.json
+2025-08-06 07:59:33,637 - INFO - Saved spot/5m data: 288 candles for BTCUSDT to 2025-08-05/spot/5m
+2025-08-06 07:59:33,837 - INFO -   Fetching 15m interval data
+2025-08-06 07:59:33,837 - INFO - Fetching spot 15 batch (attempt 1)
+2025-08-06 07:59:34,002 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:34,002 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/15m/BTCUSDT_15_2025-08-05.json
+2025-08-06 07:59:34,002 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/15m/BTCUSDT_15_2025-08-05.xlsx
+2025-08-06 07:59:34,002 - INFO - Deleted existing JSON file: 2025-08-05/spot/15m/BTCUSDT_15_2025-08-05.json
+2025-08-06 07:59:34,003 - INFO - Successfully wrote JSON to 2025-08-05/spot/15m/BTCUSDT_15_2025-08-05.json
+2025-08-06 07:59:34,140 - INFO - Saved spot/15m data: 96 candles for BTCUSDT to 2025-08-05/spot/15m
+2025-08-06 07:59:34,341 - INFO -   Fetching 30m interval data
+2025-08-06 07:59:34,341 - INFO - Fetching spot 30 batch (attempt 1)
+2025-08-06 07:59:34,505 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:34,505 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/30m/BTCUSDT_30_2025-08-05.json
+2025-08-06 07:59:34,505 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/30m/BTCUSDT_30_2025-08-05.xlsx
+2025-08-06 07:59:34,505 - INFO - Deleted existing JSON file: 2025-08-05/spot/30m/BTCUSDT_30_2025-08-05.json
+2025-08-06 07:59:34,506 - INFO - Successfully wrote JSON to 2025-08-05/spot/30m/BTCUSDT_30_2025-08-05.json
+2025-08-06 07:59:34,634 - INFO - Saved spot/30m data: 48 candles for BTCUSDT to 2025-08-05/spot/30m
+2025-08-06 07:59:34,835 - INFO -   Fetching 1h interval data
+2025-08-06 07:59:34,835 - INFO - Fetching spot 60 batch (attempt 1)
+2025-08-06 07:59:34,999 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:34,999 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/1h/BTCUSDT_60_2025-08-05.json
+2025-08-06 07:59:34,999 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/1h/BTCUSDT_60_2025-08-05.xlsx
+2025-08-06 07:59:34,999 - INFO - Deleted existing JSON file: 2025-08-05/spot/1h/BTCUSDT_60_2025-08-05.json
+2025-08-06 07:59:34,999 - INFO - Successfully wrote JSON to 2025-08-05/spot/1h/BTCUSDT_60_2025-08-05.json
+2025-08-06 07:59:35,039 - INFO - Saved spot/1h data: 24 candles for BTCUSDT to 2025-08-05/spot/1h
+2025-08-06 07:59:35,239 - INFO -   Fetching 2h interval data
+2025-08-06 07:59:35,239 - INFO - Fetching spot 120 batch (attempt 1)
+2025-08-06 07:59:35,434 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:35,434 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/2h/BTCUSDT_120_2025-08-05.json
+2025-08-06 07:59:35,434 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/2h/BTCUSDT_120_2025-08-05.xlsx
+2025-08-06 07:59:35,435 - INFO - Deleted existing JSON file: 2025-08-05/spot/2h/BTCUSDT_120_2025-08-05.json
+2025-08-06 07:59:35,435 - INFO - Successfully wrote JSON to 2025-08-05/spot/2h/BTCUSDT_120_2025-08-05.json
+2025-08-06 07:59:35,640 - INFO - Saved spot/2h data: 12 candles for BTCUSDT to 2025-08-05/spot/2h
+2025-08-06 07:59:35,841 - INFO -   Fetching 4h interval data
+2025-08-06 07:59:35,841 - INFO - Fetching spot 240 batch (attempt 1)
+2025-08-06 07:59:36,037 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:36,037 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/4h/BTCUSDT_240_2025-08-05.json
+2025-08-06 07:59:36,037 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/4h/BTCUSDT_240_2025-08-05.xlsx
+2025-08-06 07:59:36,037 - INFO - Deleted existing JSON file: 2025-08-05/spot/4h/BTCUSDT_240_2025-08-05.json
+2025-08-06 07:59:36,038 - INFO - Successfully wrote JSON to 2025-08-05/spot/4h/BTCUSDT_240_2025-08-05.json
+2025-08-06 07:59:36,235 - INFO - Saved spot/4h data: 6 candles for BTCUSDT to 2025-08-05/spot/4h
+2025-08-06 07:59:36,436 - INFO -   Fetching 6h interval data
+2025-08-06 07:59:36,436 - INFO - Fetching spot 360 batch (attempt 1)
+2025-08-06 07:59:36,600 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:36,600 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/6h/BTCUSDT_360_2025-08-05.json
+2025-08-06 07:59:36,600 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/6h/BTCUSDT_360_2025-08-05.xlsx
+2025-08-06 07:59:36,600 - INFO - Deleted existing JSON file: 2025-08-05/spot/6h/BTCUSDT_360_2025-08-05.json
+2025-08-06 07:59:36,601 - INFO - Successfully wrote JSON to 2025-08-05/spot/6h/BTCUSDT_360_2025-08-05.json
+2025-08-06 07:59:36,634 - INFO - Saved spot/6h data: 4 candles for BTCUSDT to 2025-08-05/spot/6h
+2025-08-06 07:59:36,835 - INFO -   Fetching 12h interval data
+2025-08-06 07:59:36,835 - INFO - Fetching spot 720 batch (attempt 1)
+2025-08-06 07:59:37,004 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:37,004 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/12h/BTCUSDT_720_2025-08-05.json
+2025-08-06 07:59:37,005 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/spot/12h/BTCUSDT_720_2025-08-05.xlsx
+2025-08-06 07:59:37,005 - INFO - Deleted existing JSON file: 2025-08-05/spot/12h/BTCUSDT_720_2025-08-05.json
+2025-08-06 07:59:37,005 - INFO - Successfully wrote JSON to 2025-08-05/spot/12h/BTCUSDT_720_2025-08-05.json
+2025-08-06 07:59:37,016 - INFO - Saved spot/12h data: 2 candles for BTCUSDT to 2025-08-05/spot/12h
+2025-08-06 07:59:37,716 - INFO - Processing perpetual category for BTCUSDT
+2025-08-06 07:59:37,717 - INFO -   Fetching 1m interval data
+2025-08-06 07:59:37,717 - INFO - Fetching linear 1 batch (attempt 1)
+2025-08-06 07:59:37,883 - INFO - Fetched 1000 candles for batch
+2025-08-06 07:59:38,084 - INFO - Fetching linear 1 batch (attempt 1)
+2025-08-06 07:59:38,335 - INFO - Fetched 440 candles for batch
+2025-08-06 07:59:38,536 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:38,536 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/1m/BTCUSDT_1_2025-08-05.json
+2025-08-06 07:59:38,536 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/1m/BTCUSDT_1_2025-08-05.xlsx
+2025-08-06 07:59:38,536 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/1m/BTCUSDT_1_2025-08-05.json
+2025-08-06 07:59:38,636 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/1m/BTCUSDT_1_2025-08-05.json
+2025-08-06 07:59:41,144 - INFO - Saved perpetual/1m data: 1440 candles for BTCUSDT to 2025-08-05/perpetual/1m
+2025-08-06 07:59:41,344 - INFO -   Fetching 3m interval data
+2025-08-06 07:59:41,344 - INFO - Fetching linear 3 batch (attempt 1)
+2025-08-06 07:59:41,667 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:41,667 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/3m/BTCUSDT_3_2025-08-05.json
+2025-08-06 07:59:41,667 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/3m/BTCUSDT_3_2025-08-05.xlsx
+2025-08-06 07:59:41,668 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/3m/BTCUSDT_3_2025-08-05.json
+2025-08-06 07:59:41,670 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/3m/BTCUSDT_3_2025-08-05.json
+2025-08-06 07:59:43,338 - INFO - Saved perpetual/3m data: 480 candles for BTCUSDT to 2025-08-05/perpetual/3m
+2025-08-06 07:59:43,538 - INFO -   Fetching 5m interval data
+2025-08-06 07:59:43,539 - INFO - Fetching linear 5 batch (attempt 1)
+2025-08-06 07:59:43,704 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:43,704 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/5m/BTCUSDT_5_2025-08-05.json
+2025-08-06 07:59:43,704 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/5m/BTCUSDT_5_2025-08-05.xlsx
+2025-08-06 07:59:43,704 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/5m/BTCUSDT_5_2025-08-05.json
+2025-08-06 07:59:43,707 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/5m/BTCUSDT_5_2025-08-05.json
+2025-08-06 07:59:44,240 - INFO - Saved perpetual/5m data: 288 candles for BTCUSDT to 2025-08-05/perpetual/5m
+2025-08-06 07:59:44,440 - INFO -   Fetching 15m interval data
+2025-08-06 07:59:44,440 - INFO - Fetching linear 15 batch (attempt 1)
+2025-08-06 07:59:44,634 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:44,634 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/15m/BTCUSDT_15_2025-08-05.json
+2025-08-06 07:59:44,634 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/15m/BTCUSDT_15_2025-08-05.xlsx
+2025-08-06 07:59:44,634 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/15m/BTCUSDT_15_2025-08-05.json
+2025-08-06 07:59:44,635 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/15m/BTCUSDT_15_2025-08-05.json
+2025-08-06 07:59:45,139 - INFO - Saved perpetual/15m data: 96 candles for BTCUSDT to 2025-08-05/perpetual/15m
+2025-08-06 07:59:45,339 - INFO -   Fetching 30m interval data
+2025-08-06 07:59:45,339 - INFO - Fetching linear 30 batch (attempt 1)
+2025-08-06 07:59:45,535 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:45,535 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/30m/BTCUSDT_30_2025-08-05.json
+2025-08-06 07:59:45,535 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/30m/BTCUSDT_30_2025-08-05.xlsx
+2025-08-06 07:59:45,535 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/30m/BTCUSDT_30_2025-08-05.json
+2025-08-06 07:59:45,536 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/30m/BTCUSDT_30_2025-08-05.json
+2025-08-06 07:59:45,839 - INFO - Saved perpetual/30m data: 48 candles for BTCUSDT to 2025-08-05/perpetual/30m
+2025-08-06 07:59:46,039 - INFO -   Fetching 1h interval data
+2025-08-06 07:59:46,039 - INFO - Fetching linear 60 batch (attempt 1)
+2025-08-06 07:59:46,204 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:46,204 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/1h/BTCUSDT_60_2025-08-05.json
+2025-08-06 07:59:46,204 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/1h/BTCUSDT_60_2025-08-05.xlsx
+2025-08-06 07:59:46,233 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/1h/BTCUSDT_60_2025-08-05.json
+2025-08-06 07:59:46,235 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/1h/BTCUSDT_60_2025-08-05.json
+2025-08-06 07:59:46,535 - INFO - Saved perpetual/1h data: 24 candles for BTCUSDT to 2025-08-05/perpetual/1h
+2025-08-06 07:59:46,736 - INFO -   Fetching 2h interval data
+2025-08-06 07:59:46,736 - INFO - Fetching linear 120 batch (attempt 1)
+2025-08-06 07:59:46,900 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:46,933 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/2h/BTCUSDT_120_2025-08-05.json
+2025-08-06 07:59:46,933 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/2h/BTCUSDT_120_2025-08-05.xlsx
+2025-08-06 07:59:46,933 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/2h/BTCUSDT_120_2025-08-05.json
+2025-08-06 07:59:46,934 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/2h/BTCUSDT_120_2025-08-05.json
+2025-08-06 07:59:47,136 - INFO - Saved perpetual/2h data: 12 candles for BTCUSDT to 2025-08-05/perpetual/2h
+2025-08-06 07:59:47,336 - INFO -   Fetching 4h interval data
+2025-08-06 07:59:47,336 - INFO - Fetching linear 240 batch (attempt 1)
+2025-08-06 07:59:47,500 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:47,500 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/4h/BTCUSDT_240_2025-08-05.json
+2025-08-06 07:59:47,500 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/4h/BTCUSDT_240_2025-08-05.xlsx
+2025-08-06 07:59:47,500 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/4h/BTCUSDT_240_2025-08-05.json
+2025-08-06 07:59:47,501 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/4h/BTCUSDT_240_2025-08-05.json
+2025-08-06 07:59:47,543 - INFO - Saved perpetual/4h data: 6 candles for BTCUSDT to 2025-08-05/perpetual/4h
+2025-08-06 07:59:47,743 - INFO -   Fetching 6h interval data
+2025-08-06 07:59:47,743 - INFO - Fetching linear 360 batch (attempt 1)
+2025-08-06 07:59:47,908 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:47,908 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/6h/BTCUSDT_360_2025-08-05.json
+2025-08-06 07:59:47,908 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/6h/BTCUSDT_360_2025-08-05.xlsx
+2025-08-06 07:59:47,908 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/6h/BTCUSDT_360_2025-08-05.json
+2025-08-06 07:59:47,908 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/6h/BTCUSDT_360_2025-08-05.json
+2025-08-06 07:59:47,920 - INFO - Saved perpetual/6h data: 4 candles for BTCUSDT to 2025-08-05/perpetual/6h
+2025-08-06 07:59:48,120 - INFO -   Fetching 12h interval data
+2025-08-06 07:59:48,120 - INFO - Fetching linear 720 batch (attempt 1)
+2025-08-06 07:59:48,294 - INFO - Current working directory: /home/runneruser/actions-runner/_work/btc-data/btc-data
+2025-08-06 07:59:48,294 - INFO - Writing JSON to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/12h/BTCUSDT_720_2025-08-05.json
+2025-08-06 07:59:48,294 - INFO - Writing Excel to: /home/runneruser/actions-runner/_work/btc-data/btc-data/2025-08-05/perpetual/12h/BTCUSDT_720_2025-08-05.xlsx
+2025-08-06 07:59:48,294 - INFO - Deleted existing JSON file: 2025-08-05/perpetual/12h/BTCUSDT_720_2025-08-05.json
+2025-08-06 07:59:48,295 - INFO - Successfully wrote JSON to 2025-08-05/perpetual/12h/BTCUSDT_720_2025-08-05.json
+2025-08-06 07:59:48,339 - INFO - Saved perpetual/12h data: 2 candles for BTCUSDT to 2025-08-05/perpetual/12h
+2025-08-06 07:59:49,039 - INFO - Data collection completed for BTCUSDT: 20/20 successful
+2025-08-06 07:59:49,040 - INFO - All BTCUSDT data fetched successfully
