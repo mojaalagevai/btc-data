@@ -123,7 +123,6 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git update-index --refresh  # Refresh Git index to sync with file system
         echo "=== Git Status Before Add ==="
         git status
         git add .
