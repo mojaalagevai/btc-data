@@ -3,7 +3,7 @@ name: Fetch Crypto Candle Data
 on:  
   schedule:  
     # Run daily at 2:00 AM UTC (Option 1: Recommended)  
-    - cron: 0 */3 * * *
+    - cron: '0 2,8 * * *'
   
   workflow_dispatch: # Allow manual trigger  
   
