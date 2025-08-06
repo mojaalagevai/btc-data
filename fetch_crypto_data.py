@@ -155,7 +155,6 @@ class CryptoDataFetcher:
       
     def fetch_candle_data_with_retry(self, category: str, interval: str,  
                                start_time: int, end_time: int) -> Optional[Dict]:  
-    """Fetch candle data with retry logic and pagination for 1m intervals."""  
       
     # Calculate if pagination is needed  
     interval_minutes = self.get_interval_minutes(interval)  
