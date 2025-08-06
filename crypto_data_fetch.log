@@ -232,3 +232,81 @@
 2025-08-06 00:58:24,391 - INFO - Saved perpetual/12h data: 2 candles for BTCUSDT to 2025-08-05/perpetual/12h
 2025-08-06 00:58:25,092 - INFO - Data collection completed for BTCUSDT: 20/20 successful
 2025-08-06 00:58:25,092 - INFO - All BTCUSDT data fetched successfully
+2025-08-06 01:00:15,238 - INFO - No proxy configured, using direct connection
+2025-08-06 01:00:15,238 - INFO - Starting BTCUSDT candle data collection
+2025-08-06 01:00:15,238 - INFO - Testing server time with proxy: False
+2025-08-06 01:00:15,238 - INFO - Proxy URL: 
+2025-08-06 01:00:15,239 - INFO - Target URL: https://api.bybit.com/v5/market/time
+2025-08-06 01:00:15,494 - INFO - ✓ Server time test successful
+2025-08-06 01:00:15,495 - INFO - Fetching data for 2025-08-05 (UTC)
+2025-08-06 01:00:15,495 - INFO - Time range: 1754352000000 to 1754438399999
+2025-08-06 01:00:15,495 - INFO - Processing spot category for BTCUSDT
+2025-08-06 01:00:15,495 - INFO -   Fetching 1m interval data
+2025-08-06 01:00:15,495 - INFO - Fetching spot 1 batch (attempt 1)
+2025-08-06 01:00:15,661 - INFO - Fetched 1000 candles for batch
+2025-08-06 01:00:15,862 - INFO - Fetching spot 1 batch (attempt 1)
+2025-08-06 01:00:16,183 - INFO - Fetched 440 candles for batch
+2025-08-06 01:00:20,138 - INFO - Saved spot/1m data: 1440 candles for BTCUSDT to 2025-08-05/spot/1m
+2025-08-06 01:00:20,339 - INFO -   Fetching 3m interval data
+2025-08-06 01:00:20,339 - INFO - Fetching spot 3 batch (attempt 1)
+2025-08-06 01:00:21,836 - INFO - Saved spot/3m data: 480 candles for BTCUSDT to 2025-08-05/spot/3m
+2025-08-06 01:00:22,037 - INFO -   Fetching 5m interval data
+2025-08-06 01:00:22,038 - INFO - Fetching spot 5 batch (attempt 1)
+2025-08-06 01:00:23,437 - INFO - Saved spot/5m data: 288 candles for BTCUSDT to 2025-08-05/spot/5m
+2025-08-06 01:00:23,637 - INFO -   Fetching 15m interval data
+2025-08-06 01:00:23,637 - INFO - Fetching spot 15 batch (attempt 1)
+2025-08-06 01:00:23,943 - INFO - Saved spot/15m data: 96 candles for BTCUSDT to 2025-08-05/spot/15m
+2025-08-06 01:00:24,144 - INFO -   Fetching 30m interval data
+2025-08-06 01:00:24,144 - INFO - Fetching spot 30 batch (attempt 1)
+2025-08-06 01:00:24,344 - INFO - Saved spot/30m data: 48 candles for BTCUSDT to 2025-08-05/spot/30m
+2025-08-06 01:00:24,544 - INFO -   Fetching 1h interval data
+2025-08-06 01:00:24,544 - INFO - Fetching spot 60 batch (attempt 1)
+2025-08-06 01:00:24,731 - INFO - Saved spot/1h data: 24 candles for BTCUSDT to 2025-08-05/spot/1h
+2025-08-06 01:00:24,931 - INFO -   Fetching 2h interval data
+2025-08-06 01:00:24,931 - INFO - Fetching spot 120 batch (attempt 1)
+2025-08-06 01:00:25,108 - INFO - Saved spot/2h data: 12 candles for BTCUSDT to 2025-08-05/spot/2h
+2025-08-06 01:00:25,309 - INFO -   Fetching 4h interval data
+2025-08-06 01:00:25,309 - INFO - Fetching spot 240 batch (attempt 1)
+2025-08-06 01:00:25,488 - INFO - Saved spot/4h data: 6 candles for BTCUSDT to 2025-08-05/spot/4h
+2025-08-06 01:00:25,733 - INFO -   Fetching 6h interval data
+2025-08-06 01:00:25,733 - INFO - Fetching spot 360 batch (attempt 1)
+2025-08-06 01:00:26,135 - INFO - Saved spot/6h data: 4 candles for BTCUSDT to 2025-08-05/spot/6h
+2025-08-06 01:00:26,336 - INFO -   Fetching 12h interval data
+2025-08-06 01:00:26,336 - INFO - Fetching spot 720 batch (attempt 1)
+2025-08-06 01:00:26,634 - INFO - Saved spot/12h data: 2 candles for BTCUSDT to 2025-08-05/spot/12h
+2025-08-06 01:00:27,335 - INFO - Processing perpetual category for BTCUSDT
+2025-08-06 01:00:27,335 - INFO -   Fetching 1m interval data
+2025-08-06 01:00:27,336 - INFO - Fetching linear 1 batch (attempt 1)
+2025-08-06 01:00:27,534 - INFO - Fetched 1000 candles for batch
+2025-08-06 01:00:27,734 - INFO - Fetching linear 1 batch (attempt 1)
+2025-08-06 01:00:27,899 - INFO - Fetched 440 candles for batch
+2025-08-06 01:00:31,937 - INFO - Saved perpetual/1m data: 1440 candles for BTCUSDT to 2025-08-05/perpetual/1m
+2025-08-06 01:00:32,138 - INFO -   Fetching 3m interval data
+2025-08-06 01:00:32,138 - INFO - Fetching linear 3 batch (attempt 1)
+2025-08-06 01:00:32,942 - INFO - Saved perpetual/3m data: 480 candles for BTCUSDT to 2025-08-05/perpetual/3m
+2025-08-06 01:00:33,142 - INFO -   Fetching 5m interval data
+2025-08-06 01:00:33,142 - INFO - Fetching linear 5 batch (attempt 1)
+2025-08-06 01:00:33,635 - INFO - Saved perpetual/5m data: 288 candles for BTCUSDT to 2025-08-05/perpetual/5m
+2025-08-06 01:00:33,835 - INFO -   Fetching 15m interval data
+2025-08-06 01:00:33,836 - INFO - Fetching linear 15 batch (attempt 1)
+2025-08-06 01:00:34,046 - INFO - Saved perpetual/15m data: 96 candles for BTCUSDT to 2025-08-05/perpetual/15m
+2025-08-06 01:00:34,247 - INFO -   Fetching 30m interval data
+2025-08-06 01:00:34,247 - INFO - Fetching linear 30 batch (attempt 1)
+2025-08-06 01:00:34,443 - INFO - Saved perpetual/30m data: 48 candles for BTCUSDT to 2025-08-05/perpetual/30m
+2025-08-06 01:00:34,643 - INFO -   Fetching 1h interval data
+2025-08-06 01:00:34,643 - INFO - Fetching linear 60 batch (attempt 1)
+2025-08-06 01:00:34,821 - INFO - Saved perpetual/1h data: 24 candles for BTCUSDT to 2025-08-05/perpetual/1h
+2025-08-06 01:00:35,022 - INFO -   Fetching 2h interval data
+2025-08-06 01:00:35,022 - INFO - Fetching linear 120 batch (attempt 1)
+2025-08-06 01:00:35,198 - INFO - Saved perpetual/2h data: 12 candles for BTCUSDT to 2025-08-05/perpetual/2h
+2025-08-06 01:00:35,398 - INFO -   Fetching 4h interval data
+2025-08-06 01:00:35,398 - INFO - Fetching linear 240 batch (attempt 1)
+2025-08-06 01:00:35,740 - INFO - Saved perpetual/4h data: 6 candles for BTCUSDT to 2025-08-05/perpetual/4h
+2025-08-06 01:00:35,940 - INFO -   Fetching 6h interval data
+2025-08-06 01:00:35,940 - INFO - Fetching linear 360 batch (attempt 1)
+2025-08-06 01:00:36,117 - INFO - Saved perpetual/6h data: 4 candles for BTCUSDT to 2025-08-05/perpetual/6h
+2025-08-06 01:00:36,318 - INFO -   Fetching 12h interval data
+2025-08-06 01:00:36,318 - INFO - Fetching linear 720 batch (attempt 1)
+2025-08-06 01:00:36,534 - INFO - Saved perpetual/12h data: 2 candles for BTCUSDT to 2025-08-05/perpetual/12h
+2025-08-06 01:00:37,234 - INFO - Data collection completed for BTCUSDT: 20/20 successful
+2025-08-06 01:00:37,234 - INFO - All BTCUSDT data fetched successfully
