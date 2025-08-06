@@ -249,46 +249,60 @@ class CryptoDataFetcher:
                 }    
             }    
         
-    def save_data_efficiently(self, candles_data: List, date_str: str,     
-                            category_name: str, folder_name: str, interval: str) -> bool:    
-        """Save only the essential candle data with universal coin naming."""    
-        try:    
-            # Create directory structure    
-            dir_path = f"{date_str}/{category_name}/{folder_name}"    
-            os.makedirs(dir_path, exist_ok=True)    
-                
-            # Create meaningful filenames with coin symbol, interval, and date    
-            json_filename = f"{self.symbol}_{interval}_{date_str}.json"    
-            excel_filename = f"{self.symbol}_{interval}_{date_str}.xlsx"    
-                
-            json_path = f"{dir_path}/{json_filename}"    
-            excel_path = f"{dir_path}/{excel_filename}"    
-                
-            if candles_data:    
-                # Save only the candles data (not full API response) as JSON    
-                with open(json_path, 'w') as f:    
-                    json.dump(candles_data, f, indent=2)    
-                    
-                # Convert to DataFrame and save as Excel    
-                df = pd.DataFrame(candles_data, columns=[    
-                    'startTime', 'openPrice', 'highPrice', 'lowPrice',     
-                    'closePrice', 'volume', 'turnover'    
-                ])    
-                    
-                # Convert timestamps to readable format    
-                df['startTime'] = pd.to_datetime(df['startTime'].astype(int), unit='ms')    
-                df.to_excel(excel_path, index=False)    
-                    
-                logger.info(f"Saved {category_name}/{folder_name} data: "    
-                          f"{len(candles_data)} candles for {self.symbol} to {dir_path}")    
-                return True    
-            else:    
-                logger.warning(f"No candle data to save for {category_name}/{folder_name} {self.symbol}")    
-                return False    
-                    
-        except Exception as e:    
-            logger.error(f"Error saving {category_name}/{folder_name} data for {self.symbol}: {str(e)}")    
-            return False    
+    def save_data_efficiently(self, candles_data: List, date_str: str,
+                         category_name: str, folder_name: str, interval: str) -> bool:
+    """Save only the essential candle data with universal coin naming."""
+    try:
+        # Create directory structure
+        dir_path = f"{date_str}/{category_name}/{folder_name}"
+        os.makedirs(dir_path, exist_ok=True)
+        
+        # Create meaningful filenames with coin symbol, interval, and date
+        json_filename = f"{self.symbol}_{interval}_{date_str}.json"
+        excel_filename = f"{self.symbol}_{interval}_{date_str}.xlsx"
+        
+        json_path = os.path.join(dir_path, json_filename)  # Use os.path.join for path safety
+        excel_path = os.path.join(dir_path, excel_filename)
+        
+        logger.info(f"Current working directory: {os.getcwd()}")
+        logger.info(f"Writing JSON to: {os.path.abspath(json_path)}")
+        logger.info(f"Writing Excel to: {os.path.abspath(excel_path)}")
+        
+        if candles_data:
+            # Delete existing JSON file to ensure overwrite
+            if os.path.exists(json_path):
+                os.remove(json_path)
+                logger.info(f"Deleted existing JSON file: {json_path}")
+            
+            # Save JSON
+            try:
+                with open(json_path, 'w') as f:
+                    json.dump(candles_data, f, indent=2)
+                logger.info(f"Successfully wrote JSON to {json_path}")
+            except Exception as e:
+                logger.error(f"Failed to write JSON to {json_path}: {str(e)}")
+                return False
+            
+            # Convert to DataFrame and save as Excel
+            df = pd.DataFrame(candles_data, columns=[
+                'startTime', 'openPrice', 'highPrice', 'lowPrice',
+                'closePrice', 'volume', 'turnover'
+            ])
+            
+            # Convert timestamps to readable format
+            df['startTime'] = pd.to_datetime(df['startTime'].astype(int), unit='ms')
+            df.to_excel(excel_path, index=False)
+            
+            logger.info(f"Saved {category_name}/{folder_name} data: "
+                       f"{len(candles_data)} candles for {self.symbol} to {dir_path}")
+            return True
+        else:
+            logger.warning(f"No candle data to save for {category_name}/{folder_name} {self.symbol}")
+            return False
+            
+    except Exception as e:
+        logger.error(f"Error saving {category_name}/{folder_name} data for {self.symbol}: {str(e)}")
+        return False    
         
     def fetch_all_data(self) -> bool:    
         """Main method to fetch all candle data for previous day."""    
