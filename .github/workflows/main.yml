@@ -7,13 +7,15 @@ on:
 
 jobs:
   fetch-data:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
+        # Allow pushing back using built-in GITHUB_TOKEN
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0  # Ensure we can commit and push
 
     - name: Check system resources
       run: |
@@ -21,7 +23,7 @@ jobs:
         df -h
         free -h
         nproc
-        ping -c 3 api.bybit.com || echo "Warning: Cannot reach Bybit API directly"
+        ping -c 3 api.bybit.com || echo "Warning: Cannot reach Bybit API"
 
     - name: Check repository size and limits
       run: |
@@ -39,20 +41,15 @@ jobs:
       run: |
         pip install pybit pandas openpyxl requests
 
-    - name: Test API connectivity via proxy
-      env:
-        PROXY_URL: ${{ secrets.PROXY_URL }}
+    - name: Test direct API connectivity
       run: |
         python -c "
-        import os
         import requests
         import sys
-        proxy_url = os.getenv('PROXY_URL')
-        test_url = f'{proxy_url}/https://api.bybit.com/v5/market/time' if proxy_url else 'https://api.bybit.com/v5/market/time'
         try:
-            response = requests.get(test_url, timeout=10)
+            response = requests.get('https://api.bybit.com/v5/market/time', timeout=10)
             if response.status_code == 200 and response.json().get('retCode') == 0:
-                print(f'✓ Bybit API connectivity successful. Server time: {response.json().get(\"result\", {}).get(\"timeSecond\", \"Unknown\")}')
+                print(f'✓ Bybit API reachable. Server time: {response.json()['result']['timeSecond']}")
             else:
                 print(f'✗ API error: {response.status_code}, {response.text[:200]}')
                 sys.exit(1)
@@ -62,39 +59,40 @@ jobs:
         "
 
     - name: Fetch crypto candle data
-      env:
-        PROXY_URL: ${{ secrets.PROXY_URL }}
       run: python fetch_crypto_data.py
 
     - name: Check data integrity and list files
       run: |
-        echo "=== Data Integrity Check ==="
         yesterday=$(date -d 'yesterday' '+%Y-%m-%d')
-        echo "Listing all files in $yesterday:"
-        find $yesterday -type f -exec ls -l {} \;
-        if [ -d "$yesterday" ]; then
-          echo "✓ Date folder created: $yesterday"
-          for category in spot perpetual; do
-            if [ -d "$yesterday/$category" ]; then
-              echo "✓ Category folder exists: $category"
-              json_count=$(find "$yesterday/$category" -name "*.json" | wc -l)
-              excel_count=$(find "$yesterday/$category" -name "*.xlsx" | wc -l)
-              echo " JSON files: $json_count, Excel files: $excel_count"
-              if [ "$json_count" -eq 10 ] && [ "$excel_count" -eq 10 ]; then
-                echo " ✓ All interval files present for $category"
-              else
-                echo " ⚠ Expected 10 files each, got JSON: $json_count, Excel: $excel_count"
-                exit 1
-              fi
-            else
-              echo "✗ Missing category folder: $category"
-              exit 1
-            fi
-          done
-        else
-          echo "✗ Date folder not created"
+        echo "=== Data Integrity Check ==="
+        echo "Looking for data folder: $yesterday"
+
+        if [ ! -d "$yesterday" ]; then
+          echo "✗ Date folder not created: $yesterday"
           exit 1
         fi
+
+        echo "Listing files in $yesterday:"
+        find "$yesterday" -type f -exec ls -lh {} \;
+
+        for category in spot perpetual; do
+          cat_path="$yesterday/$category"
+          if [ ! -d "$cat_path" ]; then
+            echo "✗ Missing category folder: $category"
+            exit 1
+          fi
+
+          json_count=$(find "$cat_path" -name "*.json" | wc -l)
+          excel_count=$(find "$cat_path" -name "*.xlsx" | wc -l)
+          echo "✓ $category: JSON=$json_count, Excel=$excel_count"
+
+          if [ "$json_count" -lt 10 ] || [ "$excel_count" -lt 10 ]; then
+            echo "⚠ Expected at least 10 files each, got JSON: $json_count, Excel: $excel_count"
+            exit 1
+          fi
+        done
+
+        echo "✓ All expected folders and files are present."
 
     - name: Check log file
       run: |
@@ -107,30 +105,32 @@ jobs:
           if [ "$error_count" -gt 0 ]; then
             echo "⚠ Found $error_count ERROR entries in log"
             grep "ERROR" crypto_data_fetch.log | tail -5
+            exit 1
           else
             echo "✓ No errors found in log file"
           fi
         else
           echo "⚠ Log file not found"
+          exit 1
         fi
 
     - name: Configure Git
       run: |
-        git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-        git config --local user.name "${{ github.actor }}"
-        git config --local core.autocrlf false  # Disable line-ending conversion
-        git config --local core.ignorecase false  # Ensure case sensitivity
+        git config user.email "actions@github.com"
+        git config user.name "github-actions[bot]"
+        git config core.autocrlf false
+        git config core.ignorecase false
 
     - name: Commit and push changes
       run: |
-        echo "=== Git Status Before Add ==="
-        git status
         git add .
-        echo "=== Git Status After Add ==="
-        git status
-        git commit -m "Add crypto candle data for $(date -d 'yesterday' '+%Y-%m-%d')" --allow-empty
-        git push
-        echo "✓ Pushed changes to repository"
+        if git diff --cached --quiet; then
+          echo "No changes to commit."
+        else
+          git commit -m "Add crypto candle data for $(date -d 'yesterday' '+%Y-%m-%d')"
+          git push origin HEAD:main || git push origin HEAD:main  # Fallback retry
+          echo "✓ Pushed changes to repository"
+        fi
 
     - name: Upload log file as artifact
       if: always()
