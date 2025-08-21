@@ -39,7 +39,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pybit pandas openpyxl requests
+        pip install pybit pandas openpyxl requests ccxt
 
     
 
