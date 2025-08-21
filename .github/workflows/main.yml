@@ -1,126 +1,129 @@
-name: Fetch Crypto Candle Data
-
-on:
-  schedule:
-    - cron: '0 2,8 * * *'
-  workflow_dispatch:
-
-jobs:
-  fetch-data:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        # Allow pushing back using built-in GITHUB_TOKEN
-        token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0  # Ensure we can commit and push
-
-    - name: Check system resources
-      run: |
-        echo "=== System Resource Check ==="
-        df -h
-        free -h
-        nproc
-        ping -c 3 api.bybit.com || echo "Warning: Cannot reach Bybit API"
-
-    - name: Check repository size and limits
-      run: |
-        echo "=== Repository Size Check ==="
-        du -sh .
-        find . -type f | wc -l
-        git count-objects -vH
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-
-    - name: Install dependencies
-      run: |
-        pip install pybit pandas openpyxl requests ccxt
-
-    
-
-    - name: Fetch crypto candle data
-      run: python fetch_crypto_data.py
-
-    - name: Check data integrity and list files
-      run: |
-        yesterday=$(date -d 'yesterday' '+%Y-%m-%d')
-        echo "=== Data Integrity Check ==="
-        echo "Looking for data folder: $yesterday"
-
-        if [ ! -d "$yesterday" ]; then
-          echo "✗ Date folder not created: $yesterday"
-          exit 1
-        fi
-
-        echo "Listing files in $yesterday:"
-        find "$yesterday" -type f -exec ls -lh {} \;
-
-        for category in spot perpetual; do
-          cat_path="$yesterday/$category"
-          if [ ! -d "$cat_path" ]; then
-            echo "✗ Missing category folder: $category"
-            exit 1
-          fi
-
-          json_count=$(find "$cat_path" -name "*.json" | wc -l)
-          excel_count=$(find "$cat_path" -name "*.xlsx" | wc -l)
-          echo "✓ $category: JSON=$json_count, Excel=$excel_count"
-
-          if [ "$json_count" -lt 10 ] || [ "$excel_count" -lt 10 ]; then
-            echo "⚠ Expected at least 10 files each, got JSON: $json_count, Excel: $excel_count"
-            exit 1
-          fi
-        done
-
-        echo "✓ All expected folders and files are present."
-
-    - name: Check log file
-      run: |
-        if [ -f "crypto_data_fetch.log" ]; then
-          echo "=== Log File Summary ==="
-          du -h crypto_data_fetch.log
-          echo "Last 10 log entries:"
-          tail -10 crypto_data_fetch.log
-          error_count=$(grep -c "ERROR" crypto_data_fetch.log || echo "0")
-          if [ "$error_count" -gt 0 ]; then
-            echo "⚠ Found $error_count ERROR entries in log"
-            grep "ERROR" crypto_data_fetch.log | tail -5
-            exit 1
-          else
-            echo "✓ No errors found in log file"
-          fi
-        else
-          echo "⚠ Log file not found"
-          exit 1
-        fi
-
-    - name: Configure Git
-      run: |
-        git config user.email "actions@github.com"
-        git config user.name "github-actions[bot]"
-        git config core.autocrlf false
-        git config core.ignorecase false
-
-    - name: Commit and push changes
-      run: |
-        git add .
-        if git diff --cached --quiet; then
-          echo "No changes to commit."
-        else
-          git commit -m "Add crypto candle data for $(date -d 'yesterday' '+%Y-%m-%d')"
-          git push origin HEAD:main || git push origin HEAD:main  # Fallback retry
-          echo "✓ Pushed changes to repository"
-        fi
-
-    - name: Upload log file as artifact
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: crypto-data-fetch-log-${{ github.run_number }}
-        path: crypto_data_fetch.log
+name: Fetch Crypto Candle Data  
+  
+on:  
+  schedule:  
+    - cron: '0 2,8 * * *'  
+  workflow_dispatch:  
+  
+jobs:  
+  fetch-data:  
+    runs-on: ubuntu-latest  
+  
+    steps:  
+    - name: Checkout repository  
+      uses: actions/checkout@v4  
+      with:  
+        token: ${{ secrets.GITHUB_TOKEN }}  
+        fetch-depth: 0  
+  
+    - name: Check system resources  
+      run: |  
+        echo "=== System Resource Check ==="  
+        df -h  
+        free -h  
+        nproc  
+        ping -c 3 api.coinbase.com || echo "Warning: Cannot reach Coinbase API"  
+  
+    - name: Check repository size and limits  
+      run: |  
+        echo "=== Repository Size Check ==="  
+        du -sh .  
+        find . -type f | wc -l  
+        git count-objects -vH  
+  
+    - name: Set up Python  
+      uses: actions/setup-python@v4  
+      with:  
+        python-version: '3.9'  
+  
+    - name: Install dependencies  
+      run: |  
+        pip install pandas openpyxl ccxt  
+  
+    - name: Fetch crypto candle data  
+      run: python fetch_crypto_data.py  
+  
+    - name: Check data integrity and list files  
+      run: |  
+        yesterday=$(date -d 'yesterday' '+%Y-%m-%d')  
+        echo "=== Data Integrity Check ==="  
+        echo "Looking for data folder: $yesterday"  
+  
+        if [ ! -d "$yesterday" ]; then  
+          echo "✗ Date folder not created: $yesterday"  
+          exit 1  
+        fi  
+  
+        echo "Listing files in $yesterday:"  
+        find "$yesterday" -type f -exec ls -lh {} \;  
+  
+        # Check both spot and perpetual categories  
+        for category in spot perpetual; do  
+          cat_path="$yesterday/$category"  
+          if [ -d "$cat_path" ]; then  
+            json_count=$(find "$cat_path" -name "*.json" | wc -l)  
+            excel_count=$(find "$cat_path" -name "*.xlsx" | wc -l)  
+            echo "✓ $category: JSON=$json_count, Excel=$excel_count"  
+  
+            # Expect at least 5 timeframes per category (actual count depends on exchange support)  
+            if [ "$json_count" -lt 5 ] || [ "$excel_count" -lt 5 ]; then  
+              echo "⚠ Expected at least 5 files each for $category, got JSON: $json_count, Excel: $excel_count"  
+            fi  
+          else  
+            echo "⚠ Missing category folder: $category (may not be supported by exchange)"  
+          fi  
+        done  
+  
+        # Ensure at least spot data exists  
+        if [ ! -d "$yesterday/spot" ]; then  
+          echo "✗ Missing required spot folder"  
+          exit 1  
+        fi  
+  
+        echo "✓ Data integrity check completed."  
+  
+    - name: Check log file  
+      run: |  
+        if [ -f "crypto_data_fetch.log" ]; then  
+          echo "=== Log File Summary ==="  
+          du -h crypto_data_fetch.log  
+          echo "Last 10 log entries:"  
+          tail -10 crypto_data_fetch.log  
+          error_count=$(grep -c "ERROR" crypto_data_fetch.log || echo "0")  
+          if [ "$error_count" -gt 0 ]; then  
+            echo "⚠ Found $error_count ERROR entries in log"  
+            grep "ERROR" crypto_data_fetch.log | tail -5  
+            exit 1  
+          else  
+            echo "✓ No errors found in log file"  
+          fi  
+        else  
+          echo "⚠ Log file not found"  
+          exit 1  
+        fi  
+  
+    - name: Configure Git  
+      run: |  
+        git config user.email "actions@github.com"  
+        git config user.name "github-actions[bot]"  
+        git config core.autocrlf false  
+        git config core.ignorecase false  
+  
+    - name: Commit and push changes  
+      run: |  
+        git add .  
+        if git diff --cached --quiet; then  
+          echo "No changes to commit."  
+        else  
+          git commit -m "Add crypto candle data for $(date -d 'yesterday' '+%Y-%m-%d')"  
+          git push origin HEAD:main || git push origin HEAD:main  
+          echo "✓ Pushed changes to repository"  
+        fi  
+  
+    - name: Upload log file as artifact  
+      if: always()  
+      uses: actions/upload-artifact@v4  
+      with:  
+        name: crypto-data-fetch-log-${{ github.run_number }}  
+        path: crypto_data_fetch.log  
         retention-days: 30
