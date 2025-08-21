@@ -41,22 +41,7 @@ jobs:
       run: |
         pip install pybit pandas openpyxl requests
 
-    - name: Test direct API connectivity
-      run: |
-        python -c "
-        import requests
-        import sys
-        try:
-            response = requests.get('https://api.bybit.com/v5/market/time', timeout=10)
-            if response.status_code == 200 and response.json().get('retCode') == 0:
-                print(f'✓ Bybit API reachable. Server time: {response.json()['result']['timeSecond']}")
-            else:
-                print(f'✗ API error: {response.status_code}, {response.text[:200]}')
-                sys.exit(1)
-        except Exception as e:
-            print(f'✗ API connectivity error: {str(e)}')
-            sys.exit(1)
-        "
+    
 
     - name: Fetch crypto candle data
       run: python fetch_crypto_data.py
