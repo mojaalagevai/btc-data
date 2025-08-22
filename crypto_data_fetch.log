@@ -6222,3 +6222,57 @@
 2025-08-22 03:11:34,788 - WARNING - Skipping perpetual category - no symbol found
 2025-08-22 03:11:34,788 - INFO - Data collection completed: 8/8 successful
 2025-08-22 03:11:34,789 - INFO - All BTCUSDT data fetched successfully
+2025-08-22 08:31:18,846 - WARNING - Perpetual symbol not found for BTC
+2025-08-22 08:31:18,846 - INFO - Initialized coinbaseadvanced exchange
+2025-08-22 08:31:18,846 - INFO - Spot symbol: BTC/USDT
+2025-08-22 08:31:18,846 - INFO - Perpetual symbol: None
+2025-08-22 08:31:18,846 - INFO - Supported timeframes: ['1m', '5m', '15m', '30m', '1h', '2h', '6h', '1d']
+2025-08-22 08:31:18,846 - INFO - Starting data collection for BTC
+2025-08-22 08:31:18,876 - INFO - ✓ Exchange connectivity test successful
+2025-08-22 08:31:18,877 - INFO - Fetching data for 2025-08-21 (UTC)
+2025-08-22 08:31:18,877 - INFO - Time range: 1755734400000 to 1755820799999
+2025-08-22 08:31:18,877 - INFO - Processing spot category
+2025-08-22 08:31:18,877 - INFO -   Fetching 1m interval data for BTC/USDT
+2025-08-22 08:31:18,877 - INFO - Fetching BTC/USDT 1m data (attempt 1)
+2025-08-22 08:31:19,042 - INFO - Fetched 190 candles for BTC/USDT 1m
+2025-08-22 08:31:19,043 - INFO - Successfully wrote JSON to 2025-08-21/spot/1m/BTCUSDT_1m_2025-08-21.json
+2025-08-22 08:31:19,219 - INFO - Saved spot/1m data: 190 candles for BTC/USDT
+2025-08-22 08:31:19,419 - INFO -   Fetching 5m interval data for BTC/USDT
+2025-08-22 08:31:19,419 - INFO - Fetching BTC/USDT 5m data (attempt 1)
+2025-08-22 08:31:19,515 - INFO - Fetched 278 candles for BTC/USDT 5m
+2025-08-22 08:31:19,518 - INFO - Successfully wrote JSON to 2025-08-21/spot/5m/BTCUSDT_5m_2025-08-21.json
+2025-08-22 08:31:19,572 - INFO - Saved spot/5m data: 278 candles for BTC/USDT
+2025-08-22 08:31:19,772 - INFO -   Fetching 15m interval data for BTC/USDT
+2025-08-22 08:31:19,772 - INFO - Fetching BTC/USDT 15m data (attempt 1)
+2025-08-22 08:31:19,859 - INFO - Fetched 96 candles for BTC/USDT 15m
+2025-08-22 08:31:19,860 - INFO - Successfully wrote JSON to 2025-08-21/spot/15m/BTCUSDT_15m_2025-08-21.json
+2025-08-22 08:31:19,883 - INFO - Saved spot/15m data: 96 candles for BTC/USDT
+2025-08-22 08:31:20,084 - INFO -   Fetching 30m interval data for BTC/USDT
+2025-08-22 08:31:20,084 - INFO - Fetching BTC/USDT 30m data (attempt 1)
+2025-08-22 08:31:20,168 - INFO - Fetched 48 candles for BTC/USDT 30m
+2025-08-22 08:31:20,169 - INFO - Successfully wrote JSON to 2025-08-21/spot/30m/BTCUSDT_30m_2025-08-21.json
+2025-08-22 08:31:20,184 - INFO - Saved spot/30m data: 48 candles for BTC/USDT
+2025-08-22 08:31:20,385 - INFO -   Fetching 1h interval data for BTC/USDT
+2025-08-22 08:31:20,385 - INFO - Fetching BTC/USDT 1h data (attempt 1)
+2025-08-22 08:31:20,484 - INFO - Fetched 24 candles for BTC/USDT 1h
+2025-08-22 08:31:20,485 - INFO - Successfully wrote JSON to 2025-08-21/spot/1h/BTCUSDT_1h_2025-08-21.json
+2025-08-22 08:31:20,497 - INFO - Saved spot/1h data: 24 candles for BTC/USDT
+2025-08-22 08:31:20,698 - INFO -   Fetching 2h interval data for BTC/USDT
+2025-08-22 08:31:20,698 - INFO - Fetching BTC/USDT 2h data (attempt 1)
+2025-08-22 08:31:20,776 - INFO - Fetched 12 candles for BTC/USDT 2h
+2025-08-22 08:31:20,777 - INFO - Successfully wrote JSON to 2025-08-21/spot/2h/BTCUSDT_2h_2025-08-21.json
+2025-08-22 08:31:20,787 - INFO - Saved spot/2h data: 12 candles for BTC/USDT
+2025-08-22 08:31:20,987 - INFO -   Fetching 6h interval data for BTC/USDT
+2025-08-22 08:31:20,987 - INFO - Fetching BTC/USDT 6h data (attempt 1)
+2025-08-22 08:31:21,068 - INFO - Fetched 4 candles for BTC/USDT 6h
+2025-08-22 08:31:21,068 - INFO - Successfully wrote JSON to 2025-08-21/spot/6h/BTCUSDT_6h_2025-08-21.json
+2025-08-22 08:31:21,076 - INFO - Saved spot/6h data: 4 candles for BTC/USDT
+2025-08-22 08:31:21,277 - INFO -   Fetching 1d interval data for BTC/USDT
+2025-08-22 08:31:21,277 - INFO - Fetching BTC/USDT 1d data (attempt 1)
+2025-08-22 08:31:21,352 - INFO - Fetched 1 candles for BTC/USDT 1d
+2025-08-22 08:31:21,352 - INFO - Successfully wrote JSON to 2025-08-21/spot/1d/BTCUSDT_1d_2025-08-21.json
+2025-08-22 08:31:21,362 - INFO - Saved spot/1d data: 1 candles for BTC/USDT
+2025-08-22 08:31:22,063 - INFO - Processing perpetual category
+2025-08-22 08:31:22,063 - WARNING - Skipping perpetual category - no symbol found
+2025-08-22 08:31:22,063 - INFO - Data collection completed: 8/8 successful
+2025-08-22 08:31:22,063 - INFO - All BTCUSDT data fetched successfully
